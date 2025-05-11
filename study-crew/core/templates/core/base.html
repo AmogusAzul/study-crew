@@ -9,6 +9,8 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
+    <link rel="icon"
+    href="https://cdn.discordapp.com/attachments/1336038496128864367/1371216226289979614/study-crew.png?ex=68225420&is=682102a0&hm=dc112cee952f2b07a427cea96b19106a73e843944d039792d778f7c93420a641&">
 
     {% if title %}
         <title>StudyCrew - {{ title }}</title>
@@ -20,9 +22,10 @@
     <header class="site-header">
       <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container">
-          <a class="navbar-brand" href="{% url 'landing' %}">
+          <a class="navbar-brand flex-column" href="{% url 'landing' %}">
             <img 
-            src="https://cdn.discordapp.com/attachments/996090116760150076/1368418647730819132/rn_image_picker_lib_temp_47160ca6-4606-416b-9f7e-fb53ff985bc9.jpg?ex=6821612d&is=68200fad&hm=5b27afbd4c4c53a13a5a636710193c5e14383d86e06b0d78fa0b7de0026c225c&"
+            class="rounded-circle justify-content-center" 
+            src="https://cdn.discordapp.com/attachments/1336038496128864367/1371216226289979614/study-crew.png?ex=68225420&is=682102a0&hm=dc112cee952f2b07a427cea96b19106a73e843944d039792d778f7c93420a641&"
             width="40" height="40" alt="logo">
             </img> 
             <h4>StudyCrew</h4>
@@ -45,7 +48,10 @@
                 {% if user.is_authenticated %}
                     <span class="navbar-text justify-content-left p-3">{{ user.first_name }}</span>
                     <p class="navbar-text pt-3">|</p>
-                    <a class="nav-item nav-link p-3" href="{% url 'info-logout' %}">Logout</a>
+                    <form class="nav-item nav-link p-3" method="post" action="{% url 'info-logout' %}">
+                        {% csrf_token %}
+                        <button class="btn btn-primary btn-outline-error" type="submit">Log out</button>
+                    </form>
                 {% else %}
                     <a class="nav-item nav-link" href="info-login">Login</a>
                     <a class="nav-item nav-link" href="info-register">Register</a>
