@@ -16,6 +16,11 @@ class Subject(models.Model):
 
     student = models.ForeignKey(Student, on_delete=models.CASCADE, related_name="subjects")
 
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(fields=['subject_code', 'student'], name='unique_subject_per_student')
+        ]
+
 
     def __str__(self):
-        return f"{self.name} ({self.subject_code}: {self.score})"
+        return f"({self.subject_code}: {self.score})"

@@ -1,5 +1,6 @@
 {% extends "core/base.html" %}
 {% load static %}
+{% load crispy_forms_tags %}
 {% block content %}
 
 <div class="d-flex justify-content-center bg-light border rounded p-4 m-3 flex-column">
@@ -10,12 +11,46 @@
     
     <!-- Vertical aligment-->
 
-    <ul class="list-group-flush justify-content-center p-3 m-3">
-        <li class="list-group-item list-group-item-light">login UNIANDES: {{ user.username }}</li>
+    <ul class="list-group list-group-flush justify-content-center p-3 m-3">
+        <li class="list-group-item list-group-item-light">login Uniandes: {{ user.username }}</li>
         <li class="list-group-item">Name: {{ user.first_name }}, {{ user.last_name }}.</li>
+        <li class="list-group-item">Rating: {{ user.info.rating }}</li>
 
-        <li class="list-group-item">Bachelor: {{ user.info.bachelor }}</li>
     </ul>
+
+    <div class="d-flex justify-content-center bg-light border rounded p-4 m-3 flex-column">
+
+        <form method="POST" action="{% url 'info-profile' %}">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4 ">Your info</legend>
+                {{ p_form|crispy }}
+            
+            </fieldset>
+            <div class="form-group">
+                <button type="submit" name="submit_info" class="btn btn-primary btn-outline-info">Update</button>
+            </div>
+        </form> 
+    </div>
+
+    <div class="d-flex justify-content-center bg-light border rounded p-4 m-3 flex-column">
+
+        <form method="POST" action="{% url 'info-profile' %}">
+            {% csrf_token %}
+            {{ s_form.management_form }}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4 ">Your Subjects</legend>
+                {% for form in s_form %}
+                <div class="form-group mb-2">
+                    {{ form|crispy }}
+                </div>
+                {% endfor %}
+            </fieldset>
+            <div class="form-group">
+                <button type="submit" name="submit_subjects" class="btn btn-primary btn-outline-info">Update</button>
+            </div>
+        </form> 
+    </div>
     
 </div>
 

@@ -7,8 +7,15 @@ class Info(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='info')
 
     phone = PhoneNumberField()
+
+    BACHELORS = [
+        ('B1', 'Bachelor 1'),
+        ('B2', 'Bachelor 2'),
+        ('B3', 'Bachelor 3'),
+        # Add more bachelor options as needed
+    ]
     
-    bachelor = models.CharField(default="", max_length=100)
+    bachelor = models.CharField(default="", max_length=100, choices=BACHELORS)  
 
     rating = models.FloatField(
         default=5.0,

@@ -53,8 +53,8 @@
                         <button class="btn btn-primary btn-outline-error" type="submit">Log out</button>
                     </form>
                 {% else %}
-                    <a class="nav-item nav-link" href="info-login">Login</a>
-                    <a class="nav-item nav-link" href="info-register">Register</a>
+                    <a class="nav-item nav-link" href="{% url 'info-login' %}">Login</a>
+                    <a class="nav-item nav-link" href="{% url 'info-register' %}">Register</a>
                 {% endif %}
 
               
