@@ -11,18 +11,22 @@ def registration_view(request):
         form = ExtendedUserCreationForm(request.POST)
         if form.is_valid():
             username = form.cleaned_data.get('username')
-            password = form.cleaned_data.get('password1')
-            first_name = form.cleaned_data.get('first_name')
-            last_name = form.cleaned_data.get('last_name')
-            
+            email = username + '@uniandes.edu.co'
+            messages.success(request, f'Account created for {username}!')
+            # Save the user with the email
             form.save()
-            return redirect(request, 'info-profile')
+            user = form.instance
+            user.email = email
+            user.save()
+
+            return redirect('info-profile')
     else:
         form = ExtendedUserCreationForm()
 
     return render(request, 'info/registration.html', context={
         'form': form,
     })
+
 def login_view(request):
     return render(request, 'info/login.html')
 def logout_view(request):
