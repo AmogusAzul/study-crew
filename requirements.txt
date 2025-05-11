@@ -21,3 +21,16 @@ pytz==2025.2
 six==1.17.0
 sqlparse==0.5.3
 tzdata==2025.2
+asgiref==3.8.1
+crispy-bootstrap4==2024.10
+Django==5.2.1
+django-crispy-forms==2.4
+django-phonenumber-field==8.1.0
+numpy==2.2.5
+pandas==2.2.3
+phonenumbers==9.0.5
+python-dateutil==2.9.0.post0
+pytz==2025.2
+six==1.17.0
+sqlparse==0.5.3
+tzdata==2025.2
