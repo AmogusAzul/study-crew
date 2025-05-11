@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'info.apps.InfoConfig',
     'landing.apps.LandingConfig',
     'core.apps.CoreConfig',
+    'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
