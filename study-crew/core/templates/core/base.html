@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+    {% if title %}
+        <title>StudyCrew - {{ title }}</title>
+    {% else %}
+        <title>StudyCrew</title>
+    {% endif %}
+</head>
+<body>
+    <header class="site-header">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+          <a class="navbar-brand" href="{% url 'landing' %}">
+            <img 
+            src="https://cdn.discordapp.com/attachments/996090116760150076/1368418647730819132/rn_image_picker_lib_temp_47160ca6-4606-416b-9f7e-fb53ff985bc9.jpg?ex=6821612d&is=68200fad&hm=5b27afbd4c4c53a13a5a636710193c5e14383d86e06b0d78fa0b7de0026c225c&"
+            width="40" height="40" alt="logo">
+            </img> 
+            <h4>StudyCrew</h4>
+          </a>  
+          
+          <div class="collapse navbar-collapse" id="navbarToggle">
+            <div class="navbar-nav mr-auto">
+              <a class="nav-item nav-link " href="{% url 'info-profile' %}">Profile</a>
+              <a class="nav-item nav-link " href="{% url 'contacts-friends' %}">Friends</a>
+            </div>
+
+            <!-- Navbar Center-->
+            <div class="navbar-nav mx-auto">
+              <a class="nav-item nav-link " href="{% url 'student-search' %}">Search Students</a>
+            </div>
+
+            <!-- Navbar Right Side -->
+            <div class="navbar-nav">
+
+                {% if user.is_authenticated %}
+                    <span class="navbar-text justify-content-left p-3">{{ user.first_name }}</span>
+                    <p class="navbar-text pt-3">|</p>
+                    <a class="nav-item nav-link p-3" href="{% url 'info-logout' %}">Logout</a>
+                {% else %}
+                    <a class="nav-item nav-link" href="info-login">Login</a>
+                    <a class="nav-item nav-link" href="info-register">Register</a>
+                {% endif %}
+
+              
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main role="main" class="container">
+      <div class="row">
+        <div class="col-md-12">
+          {% block content %}{% endblock %}
+        </div>
+      </div>
+    </main>
+
+</body>
+</html>

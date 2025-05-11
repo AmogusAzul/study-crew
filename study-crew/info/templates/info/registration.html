@@ -1,9 +1,29 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title></title>
-</head>
-<body>
-    <h1>Registro</h1>
-</body>
-</html>
+{% extends "core/base.html" %}
+{% load static %}
+{% block content %}
+    <div class="d-flex justify-content-center bg-light border rounded p-4 m-3 flex-column">
+        <div class="d-flex m-3">
+            <h2>Register</h2>
+        </div>
+
+        <form method="POST" action="{% url 'info-register' %}">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4 ">Join the <i>StudyCrew</i></legend>
+                {{ form.as_p }}
+            
+            </fieldset>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary btn-outline-info">Register</button>
+            </div>
+        </form>
+        <small class="border-top text-muted d-flex m-3 flex-column m-0    ">
+            <p class=" my-1">Already have an account? <a href="{% url 'info-login' %}">Login</a></p>
+            
+
+
+            <p class=" my-1">By registering, you agree to our <a href="{% url 'core-terms' %}">Terms of Service</a>.</p>
+        </small>
+
+
+{% endblock %}
