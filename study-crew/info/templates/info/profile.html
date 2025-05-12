@@ -41,9 +41,9 @@
             <fieldset class="form-group">
                 <legend class="border-bottom mb-4 ">Your Subjects</legend>
                 {% for form in s_form %}
-                <div class="form-group mb-2">
+                <span class="subject-form form-group d-flex mb-2 p-2 m-4">
                     {{ form|crispy }}
-                </div>
+                </span>
                 {% endfor %}
             </fieldset>
             <div class="form-group">
@@ -53,5 +53,26 @@
     </div>
     
 </div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.subject-form').forEach(formDiv => {
+      const slider = formDiv.querySelector('input[type="range"]');
+      if (!slider) return;
+
+      const valueDisplay = document.createElement('span');
+      valueDisplay.className = 'ms-2 badge bg-primary';
+      valueDisplay.textContent = slider.value;
+
+      // Insert it right after the slider
+      slider.insertAdjacentElement('beforebegin', valueDisplay);
+
+      // Update value live
+      slider.addEventListener('input', () => {
+        valueDisplay.textContent = slider.value;
+      });
+    });
+  });
+</script>
 
 {% endblock %}

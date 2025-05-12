@@ -1,9 +1,27 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title></title>
-</head>
-<body>
-    <h1>Perfil</h1>
-</body>
-</html>
+{% extends "core/base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="d-flex justify-content-center bg-light border rounded p-4 m-3 flex-column">
+    
+    <div class="d-flex m-3">
+        <h2>{{ target_user.username }}</h2> 
+    </div>
+    
+    <!-- Vertical aligment-->
+
+    <ul class="list-group list-group-flush justify-content-center p-3 m-3">
+        <li class="list-group-item">Name: {{ target_user.first_name }}, {{ target_user.last_name }}.</li>
+        <li class="list-group-item">Rating: {{ target_user.info.rating }}</li>
+        <li class="list-group-item">Reviews: {{ target_user.info.user_reviews}}</li>
+        {% if is_friend %}
+        <li class="list-group-item"> Phone Number: {{ target_user.info.phone }}</li>
+        {% endif %}
+
+
+    </ul>
+
+</div>
+
+{% endblock %}

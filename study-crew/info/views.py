@@ -31,6 +31,7 @@ def registration_view(request):
 
 def logout_view(request):
     return render(request, 'info/logout.html')
+
 @login_required
 def profile_view(request):
     user = request.user
@@ -48,6 +49,7 @@ def profile_view(request):
             s_form = SubjectFormSet(request.POST, instance=student)
             if s_form.is_valid():
                 s_form.save()
+                s_form = SubjectFormSet(instance=student)
     else:
         p_form = InfoUpdateForm(instance=info)
         s_form = SubjectFormSet(instance=student)
