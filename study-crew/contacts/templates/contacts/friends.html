@@ -11,9 +11,9 @@
     <!-- Vertical aligment-->
 
     <ul class="list-group list-group-flush justify-content-center p-3 m-3">
-        {% for friend in user.contact.friends %}
+        {% for friend in user.contact.friends.all %}
             <li class="list-group-item list-group-item-light">
-                <a href="{% url 'info-profile' friend.user.username %}">{{ friend.user.username }}</a>
+                <a href="{% url 'contacts-profile' friend.user.username %}">{{friend.user.first_name}}, {{friend.user.last_name}}</a>
             </li>
         {% endfor %}
     </ul>

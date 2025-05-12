@@ -11,8 +11,8 @@ def profile_view(request, username):
 
     target_user = get_object_or_404(User, username=username)
 
-    is_friend = target_user in request.user.contact.friends.all()
-    is_blocked = target_user in request.user.contact.blocked_students.all()
+    is_friend = target_user.contact in request.user.contact.friends.all()
+    is_blocked = target_user.contact in request.user.contact.blocked_students.all()
 
     if is_blocked:
         messages.error(request, "You've blocked this user.")
