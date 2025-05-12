@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'core.apps.CoreConfig',
     'crispy_forms',
     'crispy_bootstrap4',
+    'django_select2',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -136,4 +137,3 @@ LOGIN_URL = 'info-login'
 LOGIN_REDIRECT_URL = 'core-home'
 
 LOGOUT_REDIRECT_URL = 'landing'
-

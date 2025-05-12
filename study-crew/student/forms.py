@@ -1,11 +1,11 @@
 from django.forms import ModelForm
 from django import forms
 
+from django.forms.models import BaseInlineFormSet
 
 from django.forms import inlineformset_factory
 from .models import Student, Subject
 
-from django.forms import BaseInlineFormSet
 from django.core.exceptions import ValidationError
 
 class BaseSubjectFormSet(BaseInlineFormSet):

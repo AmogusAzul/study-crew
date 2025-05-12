@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 
 from phonenumber_field.formfields import PhoneNumberField
+from django_select2.forms import Select2Widget
 
 from .models import Info
 
@@ -23,9 +24,12 @@ class ExtendedUserCreationForm(UserCreationForm):
             'password2': 'Confirm Password',
         }
 
-
 class InfoUpdateForm(ModelForm):
     class Meta:
         model = Info
 
         fields = ['bachelor', 'phone']
+        widget = {
+            'bachelor': Select2Widget,
+            'phone': PhoneNumberField,
+        }

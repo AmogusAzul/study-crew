@@ -1,9 +1,23 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title></title>
-</head>
-<body>
-    <h1>Amigos</h1>
-</body>
-</html>
+{% extends "core/base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="d-flex justify-content-center bg-light border rounded p-4 m-3 flex-column">
+    <div class="d-flex m-3">
+        <h2>Friends</h2>
+    </div>
+
+    <!-- Vertical aligment-->
+
+    <ul class="list-group list-group-flush justify-content-center p-3 m-3">
+        {% for friend in user.contact.friends %}
+            <li class="list-group-item list-group-item-light">
+                <a href="{% url 'info-profile' friend.user.username %}">{{ friend.user.username }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+
+</div>
+
+{% endblock %}

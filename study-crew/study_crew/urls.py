@@ -24,5 +24,6 @@ urlpatterns = [
     path('info/', include('info.urls')),
     path('student/', include('student.urls')),
     path('contacts/', include('contacts.urls')),
+    path("select2/", include("django_select2.urls")),
 
 ]
